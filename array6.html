@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Daftar Penjualan Produk</title>
+</head>
+<body>
+	<h2>Daftar Penjualan Produk</h2>
+	<table border="1px">
+		<tr>
+			<th>No</th>
+			<th>Nama Barang</th>
+			<th>Harga</th>
+			<th>Jml</th>
+			<th>Total</th>
+		</tr>
+		<tr>
+			<td id="no"></td>
+			<td id="naba"></td>
+			<td id="haba"></td>
+			<td id="juba"></td>
+			<td id="tot"></td>
+		</tr>
+		<tr>
+			<td colspan="4">Total Penjualan</td>
+			<td id="tp"></td>
+		</tr>
+	</table>
+	<script>
+		function fN(num){
+			return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+		}
+		nb=["Mie Baso","Mie Ayam","Mie Yamso"];
+		hb=[10000,8000,12000];
+		jb=[5,10,15];
+		for(i=0;i<nb.length;i++){
+			nomor=i/1+1;
+			tb=hb[i]*jb[i];
+			no.innerHTML+=nomor;
+			naba.innerHTML +=nb[i];
+			// haba.innerHTML +=fN(hb[i]);
+			// juba.innerHTML +=fN(jb[i]);
+			// total.innerHTML +=tot;
+		}
+	</script>
+</body>
+</html>

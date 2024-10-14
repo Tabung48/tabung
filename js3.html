@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Penjualan Barang</title>
+    <style>
+        form{
+            width:200px;
+            padding:15px;
+            margin:20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 black;
+            text-align: center;
+        }
+        input[type="text"], input[type="number"]{
+            padding:10px;
+            width:170px;
+            margin-bottom:5px;
+        }
+        input[type="submit"]{
+            padding:12px;
+            width:175px;
+            margin:10px 0;
+            background: linear-gradient(maroon,red);
+            border:none;
+            color:white;
+            border-radius:20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+function fN(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1.');
+}
+
+function hitung() {
+  var nb = document.getElementById("jual").nb.value;
+  var hb = document.getElementById("jual").hb.value;
+  var jb = document.getElementById("jual").jb.value;
+  var th = hb * jb;
+  hasil.innerHTML = "<h4>Total Harga : </h4><h2>"+ fN(th) +"</h2>";
+}     
+</script>
+    <form id="jual" name="jual" onsubmit="return false">
+        <h2>PENJUALAN BARANG</h2>
+        <hr>
+        Nama Barang <br>
+        <input type="text" name="nb">
+        Harga Barang <br>
+        <input type="text" name="hb">
+        Jumlah Barang <br>
+        <input type="text" name="jb">
+        <input type="submit" value="Hitung" onclick="hitung()">        
+        <b id="hasil"></b>
+    </form>
+</body>
+</html>

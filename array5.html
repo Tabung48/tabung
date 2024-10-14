@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Daftar Penjualan</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style>
+		body{
+			width:350px;
+			margin:30px auto;
+			font:14px "Calibri";
+		}
+		table{
+			width:100%;
+			font:11px "Calibri";
+		}
+		th{
+			border-top:1px black solid;
+			border-bottom: 1px black solid;
+			padding:5px;
+		}
+		td{
+			border-bottom: 1px black solid;
+			padding:5px;
+		}
+		h2{
+			font:18px "Calibri";
+			text-align:center;
+			font-weight: bold;
+		}
+		input[type="text"], button{
+			width:250px;
+			padding:5px;
+			font:12px "Calibri";
+			margin :5px 0;
+		}
+	</style>
+</head>
+<body>
+	<fieldset style="width:250px; text-align: center; margin:10px auto">
+        <legend>Input Form</legend>
+        <input type="text" name="nb" placeholder="Nama Barang ..." /><br>
+        <input type="text" name="hb" placeholder="Harga Barang ..." /><br>
+        <input type="text" name="jb" placeholder="Jumlah Barang ..." /><br>
+        <button onclick="addBarang()" style="width:100px">Tambah Data</button>
+    </fieldset>
+<H2>Daftar Penjualan Barang<br>PT. ALIM RUGI</H2>
+<table>
+	<thead>
+		<tr>
+			<th style="text-align:left;">No</th>
+			<th style="text-align:left;">Nama Barang</th>
+			<th style="text-align:right;">Harga</th>
+			<th style="text-align:right;">Jml</th>
+			<th style="text-align:right;">Total</th>
+			<th style="text-align:center;">Aksi</th>
+		</tr>
+	</thead>
+	<tbody id="listBarang"></tbody>
+	<tfoot id="totalharga"></tfoot>
+</table>
+<script>
+var namaBrg = ["Buku Tulis", "Pensil", "Ball Point", "Buku Gambar", "Penghapus"];
+var hrgBrg = ["5000", "6500", "3000", "7000", "2000"];
+var jmlBrg = ["12", "10", "8", "20", "15"];
+function fN(num){
+	return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+function showBarang(){
+	listBarang.innerHTML = "";
+	var total = 0;
+	for(let i = 0; i < namaBrg.length; i++){
+		a=i/1+1;
+		var nb = namaBrg[i];
+		var hb = hrgBrg[i];
+		var jb = jmlBrg[i];
+		var tb = hb * jb;
+		var btnEdit = "<a href='#' onclick='editBarang("+i+")'>Edit</a>";
+        var btnHapus = "<a href='#' onclick='deleteBarang("+i+")'>Del</a>";
+		total = total + tb;
+		listBarang.innerHTML += "<tr><td>" + a + ".</td><td>" + nb + "</td><td align='right'>" + fN(hb) + "</td><td align='right'>" + jb + "</td><td align='right'>" + fN(tb) + "</td><td>" + "[ "+btnEdit + " | "+ btnHapus +" ]</td></tr>";
+	}
+	totalharga.innerHTML="<tr><td colspan='4'>Total Bayar : </td><td align='right'><b>" + fN(total) + "</b></td><td></td></tr>";
+}
+
+function addBarang(){
+    var inputnb = document.querySelector("input[name=nb]");
+    namaBrg.push(inputnb.value);
+    var inputhb = document.querySelector("input[name=hb]");
+    hrgBrg.push(inputhb.value);
+    var inputjb = document.querySelector("input[name=jb]");
+    jmlBrg.push(inputjb.value);
+    showBarang();
+}
+
+function editBarang(id){
+    var newNB = prompt("Nama Baru : ", namaBrg[id]);
+    var newHB = prompt("Harga Barang : ", hrgBrg[id]);
+    var newJB = prompt("Jml. Barang : ", jmlBrg[id]);
+    namaBrg[id] = newNB;
+    hrgBrg[id] = newHB;
+    jmlBrg[id] = newJB;
+    showBarang();
+}
+
+function deleteBarang(id){
+    namaBrg.splice(id, 1);
+    hrgBrg.splice(id, 1);
+    jmlBrg.splice(id, 1);
+    showBarang();
+}
+
+showBarang();
+</script>
+</body>
+</html>

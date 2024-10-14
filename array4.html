@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Daftar Penjualan</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style>
+		body{
+			width:300px;
+			margin:30px auto;
+		}
+		table{
+			width:100%;
+			font:11px "Calibri";
+		}
+		th{
+			border-top:1px black solid;
+			border-bottom: 1px black solid;
+			padding:5px;
+		}
+		td{
+			border-bottom: 1px black solid;
+			padding:5px;
+		}
+		h2{
+			font:18px "Calibri";
+			text-align:center;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<H2>Daftar Penjualan Barang<br>PT. ALIM RUGI</H2>
+<table>
+	<thead>
+		<tr>
+			<th style="text-align:left;">No</th>
+			<th style="text-align:left;">Nama Barang</th>
+			<th style="text-align:right;">Harga</th>
+			<th style="text-align:right;">Jml</th>
+			<th style="text-align:right;">Total</th>
+		</tr>
+	</thead>
+	<tbody id="listBarang"></tbody>
+	<tfoot id="totalharga"></tfoot>
+</table>
+<script>
+	var namaBrg = ["Buku Tulis", "Pensil", "Ball Point", "Buku Gambar", "Penghapus"];
+	var hrgBrg = ["5000", "6500", "3000", "7000", "2000"];
+	var jmlBrg = ["12", "10", "8", "20", "15"];
+	function fN(num){
+		return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+	}
+	var total = 0;
+	for(let i = 0; i < namaBrg.length; i++){
+		a=i/1+1;
+		var nb = namaBrg[i];
+		var hb = hrgBrg[i];
+		var jb = jmlBrg[i];
+		var tb = hb * jb;
+		total = total + tb;
+		listBarang.innerHTML += "<tr><td>" + a + ".</td><td>" + nb + "</td><td align='right'>" + fN(hb) + "</td><td align='right'>" + jb + "</td><td align='right'>" + fN(tb) + "</td></tr>";
+	}
+	totalharga.innerHTML="<tr><td colspan='4'>Total Bayar : </td><td align='right'><b>" + fN(total) + "</b></td></tr>";
+</script>
+</body>
+</html>

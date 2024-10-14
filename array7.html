@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CRUD JS</title>
+	<style>
+		div{
+			width:300px;
+			padding:20px;
+			font-size:11px;
+			text-align: center;
+			border:1px black solid;
+		}
+		input[type="text"],input[type="number"],button{
+			padding:5px;
+			margin: 5px 0;
+			width:280px;
+		}
+		table {
+		  border-collapse: collapse;
+		  width: 340px;
+		}
+
+		th{
+		  padding: 8px;
+		  background: #DDD;
+		}
+		td {
+		  padding: 8px;
+		}
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+	</style>
+</head>
+<body>
+<div>
+	Nama : <br>
+    <input type="text" name="nama"><br>
+    No. HP : <br>
+    <input type="number" name="hp"><br>
+    <button onclick="tambah()" style="width:100px">Tambah Data</button>
+</div>
+<H2>Buku Telepon</H2>
+<table border="1">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Nama</th>
+			<th>No. HP</th>
+			<th>Aksi</th>
+		</tr>
+	</thead>
+	<tbody id="daftar"></tbody>
+	
+</table>
+<script>
+var nama = ["Ronaldo", "Mesi", "Neimar"];
+var hp = ["085111222333", "085111222444", "085111222555"];
+
+function tampil(){
+	daftar.innerHTML = "";
+	for(i = 0; i < nama.length; i++){
+		no=i/1+1;
+		var btnEdit = "<a href='#' onclick='edit("+i+")'>Edit</a>";
+        var btnHapus = "<a href='#' onclick='hapus("+i+")'>Hapus</a>";
+		daftar.innerHTML += "<tr><td>" + no + ".</td><td>" + nama[i] + "</td><td align='right'>" + hp[i] + "</td><td>" + btnEdit + " | "+ btnHapus + "</td></tr>";
+	}
+}
+
+function tambah(){
+    var inputnama = document.querySelector("input[name=nama]");
+    nama.push(inputnama.value);
+    var inputhp = document.querySelector("input[name=hp]");
+    hp.push(inputhp.value);
+    tampil();
+}
+
+function edit(id){
+    var newnama = prompt("Nama  : ", nama[id]);
+    var newhp = prompt("Nomor HP : ", hp[id]);
+    nama[id] = newnama;
+    hp[id] = newhp;
+    tampil();
+}
+
+function hapus(id){
+    nama.splice(id, 1);
+    hp.splice(id, 1);
+    tampil();
+}
+
+tampil();
+</script>
+</body>
+</body>
+</html>

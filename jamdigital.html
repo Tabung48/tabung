@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Jam Ditital</title>
+	<style>
+		html,body{
+			height:100%;
+			background:linear-gradient(maroon,red,orange);
+			color:yellow;
+			font:16px "Tahoma";
+		}
+		h1{
+			font: 60px "Tahoma";
+			font-weight: bold;
+		} 
+ 		h2{
+			font: 30px "Tahoma";
+			font-weight: bold;
+			color: white;
+			margin:5px;
+		} 
+	</style>
+</head>
+<body>
+<br><br><br> 
+<center>
+	<h1></h1>
+	<div>
+		<H1 id="jamdigital"></H1>
+	</div>
+</center>
+
+<center id="tgl"></center>
+ 
+<script>
+	window.setTimeout("waktu()", 1000);
+	function waktu() {
+		var waktu = new Date();
+		setTimeout("waktu()", 1000);
+		var mnt=waktu.getHours()*60+waktu.getMinutes();
+
+		jam=waktu.getHours();
+		if(jam<10){
+			jam="0"+jam;
+		}
+		menit=waktu.getMinutes();
+		if(menit<10){
+			menit="0"+menit;
+		}
+		detik=waktu.getSeconds();
+		if(detik<10){
+			detik="0"+detik;
+		}
+		jamdigital.innerHTML=jam + " : " + menit + " : " + detik;
+		var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+		var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+
+		hr = waktu.getDay(),
+		hariini = hari[hr];
+		tglini = waktu.getDate();
+		bln = waktu.getMonth();
+		bulanini = bulan[bln];
+		thn = waktu.getFullYear();
+
+		// jml.innerHTML=mnt;
+		tgl.innerHTML="<h2>" + hariini + "</h2> " + tglini + " " + bulanini + " " + thn;
+	}
+</script>
+</body>
+</html>

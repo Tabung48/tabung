@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toko 48</title>
+	<style>
+		h2,h5{
+			font-family: Calibri;
+			margin:0px;
+		}
+		input[type="text"]{
+			width:250px;
+			font:12px "Calibri";
+			border:none;
+			text-decoration: none;
+		}
+		input[type="text"]:focus {
+ 			outline-color: none;
+ 			outline: 0;
+ 		}
+		input[type="reset"]{
+			padding:0px;
+			font:16px "Calibri";
+			border:none;
+			background:white;
+			font-weight:bold;
+			color:maroon;
+		}
+		button{
+			padding:6px 8px;
+			width:80px;
+			font:12px "Calibri";
+			text-align:center;
+			background:linear-gradient(blue,black);
+			color:white;
+			border-radius:5px;
+			text-decoration: none;
+			border:none;
+		}
+		table{
+			width:100%;
+			font:12px "Calibri";
+		}
+		th{
+			border-top: 1px black dashed;
+			border-bottom: 1px black dashed;
+			padding:10px 5px;
+			/*background:#333;*/
+			/*color:white;*/
+		}
+		td{
+			/*border-bottom: 1px black solid;*/
+			padding:10px 5px;
+		}
+		.hapus{
+			padding:5px 10px;
+			background:linear-gradient(maroon,red);
+			color:white;
+			border-radius:5px;
+			text-decoration: none;
+		}
+		.edit{
+			padding:5px 10px;
+			background:linear-gradient(black,green);
+			color:white;
+			border-radius:5px;
+			text-decoration: none;
+		}
+		.edit:hover, .hapus:hover, button:hover{
+			background:orange;
+		}
+	</style>
+</head>
+<body>
+<center>
+<h2>TOKO "48"</h2>
+<H5>Jl. Rasamala No. 43 Majalengka <br> HP. 081222000111</H4><br>
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th align="left" id="tanggal" colspan="2"></th>
+			<th align="right" id="jamdig" colspan="2"></th>
+		</tr>
+	</thead>
+	<tbody id="daftarbarang"></tbody>
+	<tfoot>
+		<tr id="totalbayar"></tr>
+		<form id="form" onsubmit="return false">
+		<tr>
+			<th width="20" align="left"><input type="reset" value="x"><input type="hidden" name="id"></th>
+			<th align="left"><input type="text" name="nb" placeholder="Nama Barang ..." autofocus style="width:120px"></th>
+			<th width="60" align="right">
+				<input type="text" name="hb" placeholder="Harga ..." style="width:60px; text-align:right">
+				<input type="text" name="jb" placeholder="Jumlah ..." style="width:60px; text-align:right">
+			</th>
+			<th width="90" align="right"><button onclick="tambahData()">Simpan</button></th>
+		</tr>
+		</form>
+	</tfoot>
+</table>
+<br>
+<h5>-== Terima Kasih atas Kunjungan Anda ==-</h5>
+<script>
+	var waktu = new Date();
+	var tgl = waktu.getDate();
+	var bln = waktu.getMonth();
+	var thn = waktu.getFullYear();
+	var jam = waktu.getHours();
+	var menit = waktu.getMinutes();
+	var detik = waktu.getSeconds();
+	tanggal.innerHTML=tgl+"-"+bln+"-"+thn;
+	jamdig.innerHTML=jam+":"+menit+":"+detik;
+	var nbrg = ["Buku Tulis", "Pensil", "Penggaris"];
+	var hbrg = [4000, 3000, 2000];
+	var jbrg = [5, 10, 15];
+	function fN(num){
+		return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+	}
+	function tampilData(){
+		daftarbarang.innerHTML="";
+		var total=0;
+		for(i=0;i<nbrg.length;i++){
+			var no = i/1+1;
+			var nb = nbrg[i];
+			var hb = hbrg[i];
+			var jb = jbrg[i];
+			var tb = hb * jb;
+			total = total + tb;
+			var btnEdit = "<a href='#' onclick='editData(" + i + ")' class='edit'>Edit</a>"; 
+			var btnHapus = "<a href='#' onclick='hapusData(" + i + ")' class='hapus'>Del</a>"; 
+			daftarbarang.innerHTML += "<tr><td>" + no + ".</td><td>" + nb + " ( " + jb + " x " + hb + " )</td><td align='right'>" + fN(tb) + "</td><td align='right'>" + btnEdit + " " + btnHapus + "</td></tr>";
+		}
+		totalbayar.innerHTML = "<th colspan='2' align='left'> Total Bayar </th><th align='right'>" + fN(total) + "</th><th align='right'></th>";
+	}
+
+	function tambahData(){
+		var id=document.getElementById("form").id.value;
+		if(id==""){
+			var inputnb = document.querySelector("input[name=nb]");
+			nbrg.push(inputnb.value);
+			var inputhb = document.querySelector("input[name=hb]");
+			hbrg.push(inputhb.value);
+			var inputjb = document.querySelector("input[name=jb]");
+			jbrg.push(inputjb.value);
+		}else{
+			var inputnb = document.getElementById("form").nb.value;
+			nbrg[id] = inputnb;
+			var inputhb = document.getElementById("form").hb.value;
+			hbrg[id] = inputhb;
+			var inputjb = document.getElementById("form").jb.value;
+			jbrg[id] = inputjb;
+		}
+		document.getElementById("form").nb.value="";
+		document.getElementById("form").hb.value="";
+		document.getElementById("form").jb.value="";
+		document.getElementById("form").nb.focus();
+		tampilData();
+	}
+
+	function editData(id){
+		document.getElementById("form").nb.value=nbrg[id];
+		document.getElementById("form").hb.value=hbrg[id];
+		document.getElementById("form").jb.value=jbrg[id];
+		document.getElementById("form").id.value=id;
+		document.getElementById("form").nb.focus();
+		tampilData();
+	}
+
+	function hapusData(id){
+		nbrg.splice(id, 1);
+		hbrg.splice(id, 1);
+		jbrg.splice(id, 1);
+		tampilData();
+	}
+
+	tampilData();
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #444;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            background: #555;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .news-article {
+            background: #fff;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            flex: 1 1 calc(33.333% - 2rem);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-article img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .news-article h3 {
+            margin: 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .news-article p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .news-article {
+                flex: 1 1 calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>News Website</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#world">World</a>
+        <a href="#politics">Politics</a>
+        <a href="#business">Business</a>
+        <a href="#technology">Technology</a>
+        <a href="#sports">Sports</a>
+        <a href="#entertainment">Entertainment</a>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <div class="news-article">
+                <img src="https://via.placeholder.com/150" alt="News Image">
+                <h3>News Headline 1</h3>
+                <p>Short news summary goes here.</p>
+            </div>
+            <div class="news-article">
+                <img src="https://via.placeholder.com/150" alt="News Image">
+                <h3>News Headline 2</h3>
+                <p>Short news summary goes here.</p>
+            </div>
+            <div class="news-article">
+                <img src="https://via.placeholder.com/150" alt="News Image">
+                <h3>News Headline 3</h3>
+                <p>Short news summary goes here.</p>
+            </div>
+            <!-- Tambahkan lebih banyak artikel berita sesuai kebutuhan -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 News Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

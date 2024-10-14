@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+        form{
+            width:200px;
+            padding:15px;
+            margin:20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 black;
+            text-align: center;
+        }
+        input[type="text"], input[type="number"]{
+            padding:10px;
+            width:170px;
+            margin-bottom:5px;
+        }
+        input[type="submit"]{
+            padding:12px;
+            width:175px;
+            margin:10px 0;
+            background: linear-gradient(maroon,red);
+            border:none;
+            color:white;
+            border-radius:20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+        function fN(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1.');
+        }
+        
+        
+        function hitung() {
+            var kb = document.getElementById("jual").kb.value;
+            if(kb =="BA") {
+                nb="Baso";
+                hb=10000;
+            } 
+            else if(kb =="MA") {
+                nb="Mie Ayam";
+                hb=12000;
+            } 
+            else if(kb =="MY") {
+                nb="Mie Yamso";
+                hb=15000;
+            } 
+            else {
+                nb=" ";
+                hb=0;
+            }
+            var jb = document.getElementById("jual").jb.value;
+            var th = hb * jb;
+            nabar.innerHTML = "<h2>"+ nb +"</h2>";
+            habar.innerHTML = "<h2>"+ fN(hb) +"</h2>";
+            hasil.innerHTML = "<h2>"+ fN(th) +"</h2>";
+        }     
+    </script>
+</head>
+<body>
+    <form id="jual" name="jual" onsubmit="return false">
+        <h2>Volume Balok</h2>
+        <hr>
+        Kode Barang <br>
+        <small>(BA = Baso, MA = Mie Ayam, MY = Mie Yamso)</small>
+        <input type="text" name="kb" onkeyup="hitung()" placeholder="Kode Barang">
+        Nama Barang: <b id="nabar"></b> <br>
+        Harga: <b id="habar"></b> <br>
+        Jumlah Barang
+        <input type="number" name="jb" min="1" max="10" value="1" onkeyup="hitung()" placeholder="Jumlah Barang">
+        
+        Total Harga = <b id="hasil"></b>
+    </form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name="viewport"content="width=device-width,initial-scale=1.0"/>
+<title>Angsuran Kredit</title>
+</head>
+<body>
+<h2>Angsuran Kredit</h2>
+<table border="1" width="100%" cellpadding="5px" cellspacing="0" style="font-size:12px">
+<tr>
+	<th rowspan="2" width="30px">No.</th>
+	<th rowspan="2">Jumlah</th>
+	<th colspan="5">Lama Angsuran</th>
+</tr>
+<tr>
+	<th>12 Bulan</th>
+	<th>18 Bulan</th>
+	<th>24 Bulan</th>
+	<th>30 Bulan</th>
+	<th>36 Bulan</th>
+</tr>
+<script>
+	function fN(num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1.');
+    }
+	for(no=1;no<=100;no++){
+	jml=no*1000000;
+	ang12=jml/12;
+	angs12 = ang12.toFixed(0);
+	ang18=jml/18;
+	angs18 = ang18.toFixed(0);
+	ang24=jml/24;
+	angs24 = ang24.toFixed(0);
+	ang30=jml/30;
+	angs30 = ang30.toFixed(0)
+	ang36=jml/36;
+	angs36 = ang36.toFixed(0);
+	document.write('<tr><td>' + no + '.</td><td>' + fN(jml) + '</td><td>' + fN(angs12) + '</td><td>' + fN(angs18) + '</td><td>' + fN(angs24) + '</td><td>' + fN(angs30) + '</td><td>' + fN(angs36) + '</td></tr>');
+	}
+</script>
+</table>
+</body>
+</html>

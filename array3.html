@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contoh Array</title>
+	<style>
+		table {
+		  border-collapse: collapse;
+		  width: 400px;
+		}
+
+		th{
+		  text-align: left;
+		  padding: 8px;
+		  background: #DDD;
+		}
+		td {
+		  text-align: left;
+		  padding: 8px;
+		}
+		tr:nth-child(even) {
+		  background-color: #D6EEEE;
+		}
+	</style>
+</head>
+<body>
+<h2>Daftar Nilai Siswa</h2>
+<table>
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th>Nama Siswa</th>
+			<th>Nilai</th>
+			<th>Keterangan</th>
+		</tr>
+	</thead>
+	<tbody id="daftar"></tbody>
+</table>
+<script>
+	var siswa=["Ana","Ani","Ano"];
+	var nilai=[90,80,70];
+	
+	for(i=0;i<siswa.length;i++){
+		if(nilai[i]>=75){
+			ket="Lulus";
+		}else{
+			ket="Tidak Lulus";
+		}
+		no=i+1;
+		daftar.innerHTML+="<tr><td>"+no+".</td><td>"+siswa[i]+"</td><td>"+nilai[i]+"</td><td>"+ket+"</td></tr>";
+	}
+</script>
+
+</body>
+</html>

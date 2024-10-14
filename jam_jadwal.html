@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Jadwal Pelajaran</title>
+	<style>
+		html,body{
+			height:100%;
+			background:linear-gradient(maroon,red,orange);
+			color:yellow;
+			font:16px "Tahoma";
+		}
+		h1{
+			font: 48px "Tahoma";
+			font-weight: bold;
+		} 
+		h2{
+			font: 20px "Tahoma";
+			font-weight: bold;
+			color:white;
+			margin:5px;
+		}
+		.kotak{
+			width:300px;
+			margin:20px auto;
+			padding:20px;
+			text-align:center;
+			background:yellow;
+			color:black;
+			font:28px "Calibri";
+			border-radius:50px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<br><br><br> 
+<center>
+	<h2>Jadwal Pelajaran<br>SMKN 1 KADIPATEN</h2>
+	<div>
+		<H1 id="jamdigital"></H1>
+	</div>
+</center>
+
+<!-- <center id="jml"></center> -->
+<center id="tgl"></center>
+<div id="keterangan" class="kotak"></div> 
+<script>
+	window.setTimeout("waktu()", 1000);
+	function waktu() {
+		var waktu = new Date();
+		setTimeout("waktu()", 1000);
+		var mnt=waktu.getHours()*60+waktu.getMinutes();
+
+		jam=waktu.getHours();
+		if(jam<10){
+			jam="0"+jam;
+		}
+		menit=waktu.getMinutes();
+		if(menit<10){
+			menit="0"+menit;
+		}
+		detik=waktu.getSeconds();
+		if(detik<10){
+			detik="0"+detik;
+		}
+		jamdigital.innerHTML=jam + " : " + menit + " : " + detik;
+		var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+		var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+
+		hr = waktu.getDay(),
+		hariini = hari[hr];
+		tglini = waktu.getDate();
+		bln = waktu.getMonth();
+		bulanini = bulan[bln];
+		thn = waktu.getFullYear();
+
+		tgl.innerHTML="<h2>" + hariini + "</h2>" + tglini + " " + bulanini + " " + thn;
+
+		j0=7*60;
+		j1=j0+40;
+		j2=j1+40;
+		j3=j2+40;
+		j4=j3+40;
+		j5=j4+25;
+		j6=j5+40;
+		j7=j6+40;
+		j8=j7+40;
+		j9=j8+30;
+		j10=j9+40;
+		j11=j10+40;
+		j12=j11+40;
+		j13=j12+40;
+
+		jj4=j3+30;
+		jj5=jj4+40;
+		jj6=jj5+40;
+		jj7=jj6+40;
+		if(hr=="1"){
+			if(mnt<j0){
+				ket="Pembelajaran akan segera dimulai";
+			}
+			else if(mnt<j1){
+				ket="Saatnya Jam Pelajaran Pertama";
+			}
+			else if(mnt<j2){
+				ket="Saatnya Jam Pelajaran Kedua";
+			}
+			else if(mnt<j3){
+				ket="Saatnya Jam Pelajaran Ketiga";
+			}
+			else if(mnt<j4){
+				ket="Saatnya Jam Pelajaran Keempat";
+			}
+			else if(mnt<j5){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j6){
+				ket="Saatnya Jam Pelajaran Keenam";
+			}
+			else if(mnt<j7){
+				ket="Saatnya Jam Pelajaran Ketujuh";
+			}
+			else if(mnt<j8){
+				ket="Saatnya Jam Pelajaran Kedelapan";
+			}
+			else if(mnt<j9){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j10){
+				ket="Saatnya Jam Pelajaran Kesepuluh";
+			}
+			else if(mnt<j11){
+				ket="Saatnya Jam Pelajaran Kesebelas";
+			}
+			else if(mnt<j12){
+				ket="Saatnya Jam Pelajaran Kedua belas";
+			}
+			else if(mnt<j13){
+				ket="Saatnya Jam Pelajaran Ketiga belas";
+			}
+			else{
+				ket="Saatnya Pulang";
+			}
+		}
+		if(hr=="2"){
+			if(mnt<j0){
+				ket="Pembelajaran akan segera dimulai";
+			}
+			else if(mnt<j1){
+				ket="Saatnya Jam Pelajaran Pertama";
+			}
+			else if(mnt<j2){
+				ket="Saatnya Jam Pelajaran Kedua";
+			}
+			else if(mnt<j3){
+				ket="Saatnya Jam Pelajaran Ketiga";
+			}
+			else if(mnt<j4){
+				ket="Saatnya Jam Pelajaran Keempat";
+			}
+			else if(mnt<j5){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j6){
+				ket="Saatnya Jam Pelajaran Keenam";
+			}
+			else if(mnt<j7){
+				ket="Saatnya Jam Pelajaran Ketujuh";
+			}
+			else if(mnt<j8){
+				ket="Saatnya Jam Pelajaran Kedelapan";
+			}
+			else if(mnt<j9){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j10){
+				ket="Saatnya Jam Pelajaran Kesepuluh";
+			}
+			else if(mnt<j11){
+				ket="Saatnya Jam Pelajaran Kesebelas";
+			}
+			else if(mnt<j12){
+				ket="Saatnya Jam Pelajaran Kedua belas";
+			}
+			else if(mnt<j13){
+				ket="Saatnya Jam Pelajaran Ketiga belas";
+			}
+			else{
+				ket="Saatnya Pulang";
+			}
+		}
+		if(hr=="3"){
+			if(mnt<j0){
+				ket="Pembelajaran akan segera dimulai";
+			}
+			else if(mnt<j1){
+				ket="Saatnya Jam Pelajaran Pertama";
+			}
+			else if(mnt<j2){
+				ket="Saatnya Jam Pelajaran Kedua";
+			}
+			else if(mnt<j3){
+				ket="Saatnya Jam Pelajaran Ketiga";
+			}
+			else if(mnt<j4){
+				ket="Saatnya Jam Pelajaran Keempat";
+			}
+			else if(mnt<j5){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j6){
+				ket="Saatnya Jam Pelajaran Keenam";
+			}
+			else if(mnt<j7){
+				ket="Saatnya Jam Pelajaran Ketujuh";
+			}
+			else if(mnt<j8){
+				ket="Saatnya Jam Pelajaran Kedelapan";
+			}
+			else if(mnt<j9){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j10){
+				ket="Saatnya Jam Pelajaran Kesepuluh";
+			}
+			else if(mnt<j11){
+				ket="Saatnya Jam Pelajaran Kesebelas";
+			}
+			else if(mnt<j12){
+				ket="Saatnya Jam Pelajaran Kedua belas";
+			}
+			else if(mnt<j13){
+				ket="Saatnya Jam Pelajaran Ketiga belas";
+			}
+			else{
+				ket="Saatnya Pulang";
+			}
+		}
+		if(hr=="4"){
+			if(mnt<j0){
+				ket="Pembelajaran akan segera dimulai";
+			}
+			else if(mnt<j1){
+				ket="Saatnya Jam Pelajaran Pertama";
+			}
+			else if(mnt<j2){
+				ket="Saatnya Jam Pelajaran Kedua";
+			}
+			else if(mnt<j3){
+				ket="Saatnya Jam Pelajaran Ketiga";
+			}
+			else if(mnt<j4){
+				ket="Saatnya Jam Pelajaran Keempat";
+			}
+			else if(mnt<j5){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j6){
+				ket="Saatnya Jam Pelajaran Keenam";
+			}
+			else if(mnt<j7){
+				ket="Saatnya Jam Pelajaran Ketujuh";
+			}
+			else if(mnt<j8){
+				ket="Saatnya Jam Pelajaran Kedelapan";
+			}
+			else if(mnt<j9){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<j10){
+				ket="Saatnya Jam Pelajaran Kesepuluh";
+			}
+			else if(mnt<j11){
+				ket="Saatnya Jam Pelajaran Kesebelas";
+			}
+			else if(mnt<j12){
+				ket="Saatnya Jam Pelajaran Kedua belas";
+			}
+			else if(mnt<j13){
+				ket="Saatnya Jam Pelajaran Ketiga belas";
+			}
+			else{
+				ket="Saatnya Pulang";
+			}
+		}
+		if(hr=="5"){
+			if(mnt<j0){
+				ket="Pembelajaran akan segera dimulai";
+			}
+			else if(mnt<j1){
+				ket="Saatnya Jam Pelajaran Pertama";
+			}
+			else if(mnt<j2){
+				ket="Saatnya Jam Pelajaran Kedua";
+			}
+			else if(mnt<j3){
+				ket="Saatnya Jam Pelajaran Ketiga";
+			}
+			else if(mnt<jj4){
+				ket="Saatnya Istirahat";
+			}
+			else if(mnt<jj5){
+				ket="Saatnya Jam Pelajaran Kelima";
+			}
+			else if(mnt<jj6){
+				ket="Saatnya Jam Pelajaran Keenam";
+			}
+			else if(mnt<jj7){
+				ket="Saatnya Jam Pelajaran Ketujuh";
+			}
+			else if(mnt<j13){
+				ket="Saatnya Solat, dilanjutkan dengan Ekstra Kurikuler";
+			}
+			else{
+				ket="Saatnya Pulang";
+			}
+		}
+		else{
+			ket="Selamat Hari Libur";
+		}
+		keterangan.innerHTML=ket;
+	}
+</script>
+</body>
+</html>
+
+
